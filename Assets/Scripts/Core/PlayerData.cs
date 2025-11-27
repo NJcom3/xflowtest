@@ -1,29 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using Core.Interfaces.Domains;
+using Core.Interfaces.Shop;
 using Zenject;
 
 namespace Core
 {
     public class PlayerData
     {
-        private List<IPlayerResourceModule> _resourceModules;
+        private IPlayerResourceModule[] _resourceModules;
         private string _selectedItem;
         
         [Inject]
-        public void Construct(
-            IHealthModule healthModule,
-            IGoldModule goldModule,
-            ILocationModule locationModule,
-            IVipModule vipModule
-            )
+        public void Construct(IPlayerResourceModule[] resourceModules)
         {
-            _resourceModules = new List<IPlayerResourceModule>();
-            
-            _resourceModules.Add(healthModule);
-            _resourceModules.Add(goldModule);
-            _resourceModules.Add(vipModule);
-            _resourceModules.Add(locationModule);
+            _resourceModules = resourceModules;
         }
 
         public T GetModule<T>() where T : IPlayerResourceModule
@@ -39,6 +30,51 @@ namespace Core
             throw new Exception("Module not found");
         }
 
+        public List<IHudResource> GetHudResources()
+        {
+            var list = new List<IHudResource>();
+            
+            foreach (var model in _resourceModules)
+            {
+                if (model is not IHudResource hudResource)
+                {
+                    continue;
+                } 
+                
+                list.Add(hudResource);
+            }
+
+            return list;
+        }
+
+        public IRequirement CreateRequirement(IRequirementData requirementData)
+        {
+            foreach (var module in _resourceModules)
+            {
+                var requirement = module.CreateRequirement(requirementData);
+                if (requirement != null)
+                {
+                    return requirement;
+                }
+            }
+
+            throw new Exception("Cant create such requirement");
+        }
+
+        public IChange CreateChange(IChangeData changeData)
+        {
+            foreach (var module in _resourceModules)
+            {
+                var change = module.CreateChange(changeData);
+                if (change != null)
+                {
+                    return change;
+                }
+            }
+
+            throw new Exception("Cant create such requirement");
+        }
+        
         public void SelectItem(string itemName)
         {
             _selectedItem = itemName;

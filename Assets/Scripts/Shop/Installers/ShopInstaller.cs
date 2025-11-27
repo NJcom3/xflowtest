@@ -1,7 +1,6 @@
 using Shop.Components;
 using Shop.Models;
 using Shop.Scriptables;
-using UnityEngine;
 using Zenject;
 
 namespace Shop.Installers

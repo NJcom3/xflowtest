@@ -11,7 +11,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace>Gold</RootNamespace>
+    <RootNamespace></RootNamespace>
     <ProjectGuid>{d4519c63-2151-424b-1065-9d26be1ad52d}</ProjectGuid>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
@@ -46,8 +46,22 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.55f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Gold\ShopBlocks\Data\Requirements\RequirementMaxGoldData.cs" />
+    <Compile Include="Assets\Scripts\Gold\ShopBlocks\Models\Changes\ChangeRemoveGoldPercent.cs" />
+    <Compile Include="Assets\Scripts\Gold\ShopBlocks\Models\Requirements\RequirementMinGold.cs" />
     <Compile Include="Assets\Scripts\Gold\GoldModule.cs" />
+    <Compile Include="Assets\Scripts\Gold\ShopBlocks\ChangeFactory.cs" />
+    <Compile Include="Assets\Scripts\Gold\ShopBlocks\Models\Changes\ChangeAddGoldValue.cs" />
+    <Compile Include="Assets\Scripts\Gold\ShopBlocks\Models\Changes\ChangeAddGoldPercent.cs" />
+    <Compile Include="Assets\Scripts\Gold\ShopBlocks\Models\Changes\ChangeRemoveGoldValue.cs" />
+    <Compile Include="Assets\Scripts\Gold\ShopBlocks\Data\Changes\ChangeRemoveGoldPercentData.cs" />
+    <Compile Include="Assets\Scripts\Gold\ShopBlocks\Models\Requirements\RequirementMaxGold.cs" />
+    <Compile Include="Assets\Scripts\Gold\ShopBlocks\Data\Changes\ChangeAddGoldPercentData.cs" />
+    <Compile Include="Assets\Scripts\Gold\ShopBlocks\RequirementFactory.cs" />
+    <Compile Include="Assets\Scripts\Gold\ShopBlocks\Data\Changes\ChangeRemoveGoldValueData.cs" />
     <Compile Include="Assets\Scripts\Gold\Installers\GoldInstaller.cs" />
+    <Compile Include="Assets\Scripts\Gold\ShopBlocks\Data\Requirements\RequirementMinGoldData.cs" />
+    <Compile Include="Assets\Scripts\Gold\ShopBlocks\Data\Changes\ChangeAddGoldValueData.cs" />
     <None Include="Assets\Scripts\Gold\Gold.asmdef" />
     <Reference Include="UnityEngine">
       <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.55f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>

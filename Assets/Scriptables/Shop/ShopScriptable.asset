@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: ShopScriptable
   m_EditorClassIdentifier: 
   items:
-  - {fileID: 11400000, guid: 81aca5edb261ca4458f55628b6451b4a, type: 2}
-  - {fileID: 11400000, guid: 4a97ea2e5bec5e845b50a0ecbe44b4e8, type: 2}
-  - {fileID: 11400000, guid: aafc2a175b9a81e41a22620cad6bb105, type: 2}
+  - {fileID: 11400000, guid: 572319b069248004ba01c8ef1ecc1ccc, type: 2}
+  - {fileID: 11400000, guid: 02661acf366443948a6893af1569f7dc, type: 2}
+  - {fileID: 11400000, guid: 784a42da3eac8cd49bcd3ec001550b13, type: 2}
+  - {fileID: 11400000, guid: 3d45ba5123321944f8ff1b81e7f7a447, type: 2}
+  - {fileID: 11400000, guid: 593623f00bf849c4ca7b1e06d3261417, type: 2}

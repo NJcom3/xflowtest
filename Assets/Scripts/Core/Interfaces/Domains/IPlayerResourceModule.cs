@@ -1,9 +1,10 @@
-﻿using Core.Interfaces.Base;
+﻿using Core.Interfaces.Shop;
 
 namespace Core.Interfaces.Domains
 {
-    public interface IPlayerResourceModule : IHudResource
+    public interface IPlayerResourceModule
     {
-        
+        public IRequirement CreateRequirement(IRequirementData data);
+        public IChange CreateChange(IChangeData data);
     }
 }

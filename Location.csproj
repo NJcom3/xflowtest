@@ -11,7 +11,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace>Location</RootNamespace>
+    <RootNamespace></RootNamespace>
     <ProjectGuid>{b391f3f3-4669-a64b-1208-cd0fbb2f59dd}</ProjectGuid>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
@@ -46,8 +46,16 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.55f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Location\ShopBlocks\Data\Requirements\RequirementAllowedLocationData.cs" />
+    <Compile Include="Assets\Scripts\Location\ShopBlocks\Data\Requirements\RequirementNotAllowedLocationData.cs" />
     <Compile Include="Assets\Scripts\Location\LocationModule.cs" />
+    <Compile Include="Assets\Scripts\Location\ShopBlocks\Models\Requirements\RequirementAllowedLocations.cs" />
+    <Compile Include="Assets\Scripts\Location\ShopBlocks\Data\Changes\ChangeGoToLocationData.cs" />
+    <Compile Include="Assets\Scripts\Location\ShopBlocks\RequirementFactory.cs" />
+    <Compile Include="Assets\Scripts\Location\ShopBlocks\Models\Changes\ChangeGoToLocation.cs" />
     <Compile Include="Assets\Scripts\Location\Installers\LocationInstaller.cs" />
+    <Compile Include="Assets\Scripts\Location\ShopBlocks\Models\Requirements\RequirementNotAllowedLocations.cs" />
+    <Compile Include="Assets\Scripts\Location\ShopBlocks\ChangeFactory.cs" />
     <None Include="Assets\Scripts\Location\Location.asmdef" />
     <Reference Include="UnityEngine">
       <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.55f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>

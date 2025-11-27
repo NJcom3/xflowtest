@@ -1,10 +1,18 @@
-﻿using Core.Interfaces.Domains;
+﻿using Core;
+using Core.Interfaces.Domains;
+using Gold.ShopBlocks;
 
 namespace Gold
 {
-    public class GoldModule : IGoldModule
+    public class GoldModule : ABasePlayerResourceModule, IGoldModule
     {
         private int _count = 5000;
+
+        public GoldModule()
+        {
+            _changeFactory = new ChangeFactory();
+            _requirementsFactory = new RequirementFactory();
+        }
 
         public bool IsEnough(int count)
         {
@@ -15,7 +23,6 @@ namespace Gold
         {
             if (!IsEnough(count))
             {
-                // TODO: handle error
                 return;
             }
 
@@ -31,8 +38,14 @@ namespace Gold
         {
             return _count;
         }
-
-
+        
+        #region [HUD]
+        
+        public string GetHudLabel()
+        {
+            return "Gold: ";
+        }
+        
         public void OnCheatButtonClick()
         {
             Receive(100);
@@ -42,5 +55,8 @@ namespace Gold
         {
             return GetCount().ToString();
         }
+
+        
+        #endregion
     }
 }

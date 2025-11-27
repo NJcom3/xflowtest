@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8aa21b0523f44bd994e9c7021cbb59f5, type: 3}
+  m_Name: GoToBarrens
+  m_EditorClassIdentifier: 
+  itemName: Go To Barrens
+  Requirements:
+  - rid: 8424673117956735245
+  - rid: 8424673117956735255
+  Changes:
+  - rid: 8424673117956735246
+  - rid: 8424673117956735247
+  references:
+    version: 2
+    RefIds:
+    - rid: 8424673117956735245
+      type: {class: RequirementMinGoldData, ns: Gold.ShopBlocks.Data.Requirements, asm: Gold}
+      data:
+        MinGoldCount: 500
+    - rid: 8424673117956735246
+      type: {class: ChangeRemoveGoldValueData, ns: Gold.ShopBlocks.Data.Changes, asm: Gold}
+      data:
+        GoldCount: 500
+    - rid: 8424673117956735247
+      type: {class: ChangeGoToLocationData, ns: Location.ShopBlocks.Data.Changes, asm: Location}
+      data:
+        LocationName: Barrens
+    - rid: 8424673117956735255
+      type: {class: RequirementNotAllowedLocationData, ns: Location.ShopBlocks.Data.Requirements, asm: Location}
+      data:
+        NotAllowedLocationList:
+        - Barrens

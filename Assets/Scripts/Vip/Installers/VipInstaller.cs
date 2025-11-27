@@ -1,11 +1,13 @@
 using Core.Interfaces.Domains;
-using Vip;
 using Zenject;
 
-public class VipInstaller : MonoInstaller
+namespace Vip.Installers
 {
-    public override void InstallBindings()
+    public class VipInstaller : MonoInstaller
     {
-        Container.Bind<IVipModule>().To<VipModule>().AsSingle();
+        public override void InstallBindings()
+        {
+            Container.Bind<IPlayerResourceModule>().To<VipModule>().AsSingle(); 
+        }
     }
 }

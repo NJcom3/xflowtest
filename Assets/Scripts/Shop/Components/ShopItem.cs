@@ -58,7 +58,7 @@ namespace Shop.Components
             {
                 _isLoading = true;
                 buyButton.interactable = false;
-                buyButtonText.text = "Загрузка...";
+                buyButtonText.text = "Обработка...";
                 
                 await _model.TryToBuy();
 

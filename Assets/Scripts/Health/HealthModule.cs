@@ -1,10 +1,19 @@
-﻿using Core.Interfaces.Domains;
+﻿using Core;
+using Core.Interfaces;
+using Core.Interfaces.Domains;
+using Gold.ShopBlocks;
 
 namespace Health
 {
-    public class HealthModule : IHealthModule
+    public class HealthModule : ABasePlayerResourceModule, IHealthModule
     {
         private int _count = 100;
+
+        public HealthModule()
+        {
+            _requirementsFactory = new RequirementFactory();
+            _changeFactory = new ChangeFactory();
+        }
 
         public bool IsEnough(int count)
         {
@@ -32,6 +41,13 @@ namespace Health
             return _count;
         }
 
+        
+        #region [HUD]
+        
+        public string GetHudLabel()
+        {
+            return "Health: ";
+        }
         public void OnCheatButtonClick()
         {
             Receive(25);
@@ -41,5 +57,7 @@ namespace Health
         {
             return GetCount().ToString();
         }
+        
+        #endregion
     }
 }

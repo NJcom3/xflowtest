@@ -1,11 +1,13 @@
 using Core.Interfaces.Domains;
-using Gold;
 using Zenject;
 
-public class GoldInstaller : MonoInstaller
+namespace Gold.Installers
 {
-    public override void InstallBindings()
+    public class GoldInstaller : MonoInstaller
     {
-        Container.Bind<IGoldModule>().To<GoldModule>().AsSingle();
+        public override void InstallBindings()
+        {
+            Container.Bind<IPlayerResourceModule>().To<GoldModule>().AsSingle();
+        }
     }
 }

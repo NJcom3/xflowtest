@@ -11,7 +11,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace>Gold</RootNamespace>
+    <RootNamespace></RootNamespace>
     <ProjectGuid>{2e5e3a92-7950-dca8-8fbe-15e67a37220a}</ProjectGuid>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
@@ -47,7 +47,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Health\Installers\HealthInstaller.cs" />
+    <Compile Include="Assets\Scripts\Health\ShopBlocks\Models\Changes\ChangeAddHealthValue.cs" />
     <Compile Include="Assets\Scripts\Health\HealthModule.cs" />
+    <Compile Include="Assets\Scripts\Health\ShopBlocks\Data\Requirements\RequirementMaxHealthData.cs" />
+    <Compile Include="Assets\Scripts\Health\ShopBlocks\Data\Changes\ChangeAddHealthValueData.cs" />
+    <Compile Include="Assets\Scripts\Health\ShopBlocks\Data\Changes\ChangeRemoveHealthValueData.cs" />
+    <Compile Include="Assets\Scripts\Health\ShopBlocks\RequirementFactory.cs" />
+    <Compile Include="Assets\Scripts\Health\ShopBlocks\ChangeFactory.cs" />
+    <Compile Include="Assets\Scripts\Health\ShopBlocks\Models\Changes\ChangeRemoveHealthPercent.cs" />
+    <Compile Include="Assets\Scripts\Health\ShopBlocks\Data\Changes\ChangeAddHealthPercentData.cs" />
+    <Compile Include="Assets\Scripts\Health\ShopBlocks\Data\Changes\ChangeRemoveHealthPercentData.cs" />
+    <Compile Include="Assets\Scripts\Health\ShopBlocks\Models\Changes\ChangeAddHealthPercent.cs" />
+    <Compile Include="Assets\Scripts\Health\ShopBlocks\Data\Requirements\RequirementMinHealthData.cs" />
+    <Compile Include="Assets\Scripts\Health\ShopBlocks\Models\Requirements\RequirementMaxHealth.cs" />
+    <Compile Include="Assets\Scripts\Health\ShopBlocks\Models\Changes\ChangeRemoveHealthValue.cs" />
+    <Compile Include="Assets\Scripts\Health\ShopBlocks\Models\Requirements\RequirementMinHealth.cs" />
     <None Include="Assets\Scripts\Health\Health.asmdef" />
     <Reference Include="UnityEngine">
       <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.55f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>

@@ -1,12 +1,14 @@
-using Core;
 using Core.Events;
 using Zenject;
 
-public class CoreInstaller : MonoInstaller
+namespace Core.Installers
 {
-    public override void InstallBindings()
+    public class CoreInstaller : MonoInstaller
     {
-        Container.Bind<EventBus>().AsSingle();
-        Container.Bind<PlayerData>().AsSingle();
+        public override void InstallBindings()
+        {
+            Container.Bind<EventBus>().AsSingle();
+            Container.Bind<PlayerData>().AsSingle();
+        }
     }
 }

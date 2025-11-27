@@ -17,9 +17,6 @@ namespace Shop
 
         private List<ShopItemModel> _models;
 
-        public bool IsBuyingInProgress => _buying;
-        private bool _buying = false;
-        
         [Inject]
         public void Construct(
             DiContainer diContainer,
@@ -57,11 +54,6 @@ namespace Shop
                 _diContainer.Inject(item);
                 item.Init(model);
             }
-        }
-
-        private void SetBuyingStatus(bool value)
-        {
-            _buying = value;
         }
     }
 }

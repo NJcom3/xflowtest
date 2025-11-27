@@ -1,11 +1,13 @@
 using Core.Interfaces.Domains;
-using Location;
 using Zenject;
 
-public class LocationInstaller : MonoInstaller
+namespace Location.Installers
 {
-    public override void InstallBindings()
+    public class LocationInstaller : MonoInstaller
     {
-        Container.Bind<ILocationModule>().To<LocationModule>().AsSingle();
+        public override void InstallBindings()
+        {
+            Container.Bind<IPlayerResourceModule>().To<LocationModule>().AsSingle();
+        }
     }
 }

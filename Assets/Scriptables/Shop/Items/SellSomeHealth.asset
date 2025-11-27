@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8aa21b0523f44bd994e9c7021cbb59f5, type: 3}
+  m_Name: SellSomeHealth
+  m_EditorClassIdentifier: 
+  itemName: Sell Some Health
+  Requirements:
+  - rid: 8424673117956735232
+  Changes:
+  - rid: 8424673117956735233
+  - rid: 8424673117956735228
+  references:
+    version: 2
+    RefIds:
+    - rid: 8424673117956735228
+      type: {class: ChangeAddGoldValueData, ns: Gold.ShopBlocks.Data.Changes, asm: Gold}
+      data:
+        GoldCount: 2000
+    - rid: 8424673117956735232
+      type: {class: RequirementMinHealthData, ns: Health.ShopBlocks.Data.Requirements, asm: Health}
+      data:
+        MinHealthCount: 2
+    - rid: 8424673117956735233
+      type: {class: ChangeRemoveHealthPercentData, ns: Health.ShopBlocks.Data.Changes, asm: Health}
+      data:
+        HealthPercent: 25

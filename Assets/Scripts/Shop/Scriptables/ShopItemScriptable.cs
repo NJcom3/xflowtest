@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
-using Shop.Interfaces;
-using Shop.Structs.Changes;
+using Core.Interfaces.Shop;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Shop.Scriptables
 {

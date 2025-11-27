@@ -19,6 +19,7 @@ namespace Shop.Installers
             Container.Bind<ShopItem>().FromInstance(shopItem).AsSingle();
             Container.Bind<ItemModule>().AsSingle();
             Container.Bind<ShopModule>().AsSingle();
+            
             Container.Bind<ShowItemEntryPoint>().FromInstance(showItemEntryPoint).AsSingle();
         }
     }

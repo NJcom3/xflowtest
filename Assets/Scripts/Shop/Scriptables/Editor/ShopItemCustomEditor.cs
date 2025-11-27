@@ -1,4 +1,8 @@
-﻿using System.Collections.Generic;
+﻿#if UNITY_EDITOR
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using Core.Interfaces.Shop;
 using UnityEditor;
 using UnityEngine;
 
@@ -7,40 +11,60 @@ namespace Shop.Scriptables.Editor
     [CustomEditor(typeof(ShopItemScriptable))]
     public partial class ShopItemCustomEditor : UnityEditor.Editor
     {
+        private Dictionary<string, Type> _requirementTypes = null;
+        private Dictionary<string, Type> _changesTypes = null;
+        
         public override void OnInspectorGUI()
         {
+            PrepareData();
+            
             var shopItem = (ShopItemScriptable) target;
             shopItem.itemName = EditorGUILayout.TextField("Shop Item Name", shopItem.itemName);
+            
+            GUILayout.Space(8);
             EditorGUILayout.Separator();
+            GUILayout.Space(8);
+
             DisplayRequirements(shopItem);
+            
+            GUILayout.Space(8);
             EditorGUILayout.Separator();
+            GUILayout.Space(8);
+
             DisplayChanges(shopItem);
         }
 
-        private List<string> ListStringEditor(string label, List<string> toEdit)
+        private void PrepareData()
         {
-            toEdit ??= new List<string>();
-            EditorGUILayout.LabelField($"{label}:");
-                
-            for (var i = 0; i < toEdit.Count; i++)
+            if (_requirementTypes != null && _changesTypes != null)
             {
-                EditorGUILayout.BeginHorizontal();
-                toEdit[i] = EditorGUILayout.TextField((i + 1).ToString(), toEdit[i]);
+                return;
+            }
+            
+            _requirementTypes = GetImplementations<IRequirementData>();
+            _changesTypes = GetImplementations<IChangeData>();
+        }
 
-                if (GUILayout.Button("Remove", GUILayout.MaxWidth(70)))
+        private Dictionary<string,Type> GetImplementations<T>()
+        {
+            var implementations = new Dictionary<string, Type>();
+            var interfaceType = typeof(T);
+
+            var allAssemblies = AppDomain.CurrentDomain.GetAssemblies();
+
+            foreach (var assembly in allAssemblies)
+            {
+                var implementingTypes = assembly.GetTypes()
+                    .Where(type => interfaceType.IsAssignableFrom(type) && type.IsClass && !type.IsAbstract);
+
+                foreach (var type in implementingTypes)
                 {
-                    toEdit.RemoveAt(i);
-                    return toEdit;
+                    implementations.Add(type.Name, type);
                 }
-                EditorGUILayout.EndHorizontal();
             }
 
-            if (GUILayout.Button("Add Location"))
-            {
-                toEdit.Add("");
-            }
-
-            return toEdit;
+            return implementations;
         }
     }
 }
+#endif

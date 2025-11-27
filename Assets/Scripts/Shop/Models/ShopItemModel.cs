@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Core;
 using Core.Events;
-using Shop.Interfaces;
+using Core.Interfaces.Shop;
 using UnityEngine.SceneManagement;
 using Zenject;
 

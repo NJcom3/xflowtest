@@ -1,11 +1,13 @@
 using Core.Interfaces.Domains;
-using Health;
 using Zenject;
 
-public class HealthInstaller : MonoInstaller
+namespace Health.Installers
 {
-    public override void InstallBindings()
+    public class HealthInstaller : MonoInstaller
     {
-        Container.Bind<IHealthModule>().To<HealthModule>().AsSingle();
+        public override void InstallBindings()
+        {
+            Container.Bind<IPlayerResourceModule>().To<HealthModule>().AsSingle();
+        }
     }
 }
