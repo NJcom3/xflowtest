@@ -60,6 +60,7 @@
     <Compile Include="Assets\Scripts\Vip\ShopBlocks\Models\Changes\ChangeRemoveVipTimePercent.cs" />
     <Compile Include="Assets\Scripts\Vip\ShopBlocks\Data\Changes\ChangeAddVipTimePercentData.cs" />
     <Compile Include="Assets\Scripts\Vip\ShopBlocks\ChangeFactory.cs" />
+    <Compile Include="Assets\Scripts\Vip\VipHudResource.cs" />
     <Compile Include="Assets\Scripts\Vip\ShopBlocks\Models\Changes\ChangeRemoveVipTimeValue.cs" />
     <Compile Include="Assets\Scripts\Vip\ShopBlocks\Models\Requirements\RequirementMaxVipTime.cs" />
     <None Include="Assets\Scripts\Vip\Vip.asmdef" />

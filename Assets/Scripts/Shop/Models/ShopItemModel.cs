@@ -64,6 +64,7 @@ namespace Shop.Models
             
             if (!CanBeBuyed())
             {
+                _eventBus.Publish<ValuesChanged>();
                 return;
             }
             
@@ -72,6 +73,7 @@ namespace Shop.Models
                 change.Apply();
             }
             
+            _eventBus.Publish<ValuesChanged>();
             _eventBus.Publish<ActionAllowance>(true);
         }
 

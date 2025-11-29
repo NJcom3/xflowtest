@@ -118,11 +118,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3519380955936553288}
   - {fileID: 6566066814656483947}
+  - {fileID: 3519380955936553288}
   - {fileID: 8878241209682863904}
   - {fileID: 2586359121390404269}
-  - {fileID: 5542917849258100883}
   - {fileID: 2937258120222870608}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -140,8 +139,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _scriptableObjectInstallers: []
   _monoInstallers:
-  - {fileID: 2604028635017504842}
   - {fileID: 3384219119349826434}
+  - {fileID: 2604028635017504842}
   - {fileID: 1186370299750966040}
   - {fileID: 2467621524688331904}
   - {fileID: 71571980911129105}
@@ -203,54 +202,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cce44a703f1d4dd6a507724860ef3ba5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &7276520437809612433
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5542917849258100883}
-  - component: {fileID: 3409624522480310149}
-  m_Layer: 0
-  m_Name: ShopInstaller
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5542917849258100883
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7276520437809612433}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2074621422032155854}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3409624522480310149
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7276520437809612433}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d519d3842c452f4a9c19fec6e809f89, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shopScriptable: {fileID: 0}
-  shopItem: {fileID: 0}
-  itemsContainer: {fileID: 0}
-  shopEntryPoint: {fileID: 0}
 --- !u!1 &8231942195227894594
 GameObject:
   m_ObjectHideFlags: 0

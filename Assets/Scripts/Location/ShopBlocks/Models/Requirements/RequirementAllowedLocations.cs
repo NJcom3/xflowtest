@@ -10,15 +10,13 @@ namespace Location.ShopBlocks.Models.Requirements
 {
     public class RequirementAllowedLocations : IRequirement
     {
-        private ILocationModule _locationModule;
+        private LocationModule _locationModule;
         private readonly List<string> _allowedLocations;
 
         [Inject]
-        public void Construct(
-            PlayerData playerData
-        )
+        public void Construct([InjectOptional(Id = "Location")] IPlayerResourceModule playerResourceModule)
         {
-            _locationModule = playerData.GetModule<ILocationModule>();
+            _locationModule = (LocationModule) playerResourceModule;
         }
 
         public RequirementAllowedLocations(IRequirementData data)

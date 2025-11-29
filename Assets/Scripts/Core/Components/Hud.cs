@@ -13,18 +13,18 @@ namespace Core.Components
         [SerializeField] private HudItem hudItemPrefab;
         [SerializeField] private RectTransform hudItemsContainer;
 
-        private PlayerData _playerData;
+        private IHudResource[] _hudResources;
         private EventBus _eventBus;
 
         private List<HudItem> _hudItems;
     
         [Inject]
         public void Construct(
-            PlayerData playerData,
+            IHudResource[] hudResources,
             EventBus eventBus
         )
         {
-            _playerData = playerData;
+            _hudResources = hudResources;
             _eventBus = eventBus;
         }
 
@@ -38,7 +38,7 @@ namespace Core.Components
         private void InitHudItems()
         {
             _hudItems = new List<HudItem>();
-            foreach (var hudResource in _playerData.GetHudResources())
+            foreach (var hudResource in _hudResources)
             {
                 var hudItem = Instantiate(hudItemPrefab, hudItemsContainer);
                 hudItem.Init(hudResource, _eventBus);

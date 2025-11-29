@@ -10,15 +10,13 @@ namespace Location.ShopBlocks.Models.Requirements
 {
     public class RequirementNotAllowedLocations : IRequirement
     {
-        private PlayerData _playerData;
+        private LocationModule _locationModule;
         private readonly List<string> _notAllowedLocations;
 
         [Inject]
-        public void Construct(
-            PlayerData playerData
-        )
+        public void Construct([InjectOptional(Id = "Location")] IPlayerResourceModule playerResourceModule)
         {
-            _playerData = playerData;
+            _locationModule = (LocationModule) playerResourceModule;
         }
         
         public RequirementNotAllowedLocations(IRequirementData data)
@@ -33,8 +31,7 @@ namespace Location.ShopBlocks.Models.Requirements
         
         public bool IsValid()
         {
-            var locationModule = _playerData.GetModule<ILocationModule>();
-            return !_notAllowedLocations.Contains(locationModule.GetLocation());
+            return !_notAllowedLocations.Contains(_locationModule.GetLocation());
         }
     }
 }

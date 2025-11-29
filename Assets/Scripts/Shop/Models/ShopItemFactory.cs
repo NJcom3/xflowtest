@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using Core;
+﻿using System;
+using System.Collections.Generic;
 using Core.Interfaces.Shop;
 using Shop.Scriptables;
 using Zenject;
@@ -9,61 +9,95 @@ namespace Shop.Models
     public class ShopItemFactory
     {
         private DiContainer _diContainer;
-        private PlayerData _playerData;
+        private IRequirementsFactory[] _requirementsFactories;
+        private IChangeFactory[] _changeFactories;
 
         [Inject]
         public void Construct(
             DiContainer diContainer,
-            PlayerData playerData
+            IRequirementsFactory[] requirementsFactories,
+            IChangeFactory[] changeFactories
         )
         {
             _diContainer = diContainer;
-            _playerData = playerData;
+            _requirementsFactories = requirementsFactories;
+            _changeFactories = changeFactories;
         }
 
         public ShopItemModel CreateShopItem(ShopItemScriptable shopItemScriptable)
         {
             var model = new ShopItemModel(
                 shopItemScriptable.itemName,
-                GetChangesList(shopItemScriptable),
-                GetRequirementsList(shopItemScriptable)
+                CreateChanges(shopItemScriptable),
+                CreateRequirements(shopItemScriptable)
             );
             _diContainer.Inject(model);
             return model;
         }
 
-        private List<IRequirement> GetRequirementsList(ShopItemScriptable shopItemScriptable)
+        private List<IRequirement> CreateRequirements(ShopItemScriptable shopItemScriptable)
         {
             var list = new List<IRequirement>();
             foreach (var requirementData in shopItemScriptable.Requirements)
             {
-                var requirement = _playerData.CreateRequirement(requirementData);
+                var requirement = CreateRequirement(requirementData);
 
+                if (requirement == null)
+                {
+                    continue;
+                }
+                
+                _diContainer.Inject(requirement);
+                list.Add(requirement);
+            }
+
+            return list;
+        }
+        private IRequirement CreateRequirement(IRequirementData requirementData)
+        {
+            foreach (var factory in _requirementsFactories)
+            {
+                var requirement = factory.CreateRequirement(requirementData);
                 if (requirement != null)
                 {
-                    _diContainer.Inject(requirement);
-                    list.Add(requirement);
+                    return requirement;
                 }
+            }
+
+            throw new Exception("Cant create such requirement");
+        }
+
+        private List<IChange> CreateChanges(ShopItemScriptable shopItemScriptable)
+        {
+            var list = new List<IChange>();
+            foreach (var changeData in shopItemScriptable.Changes)
+            {
+                var change = CreateChange(changeData);
+
+                if (change == null)
+                {
+                    continue;
+                }
+                
+                _diContainer.Inject(change);
+                list.Add(change);
             }
 
             return list;
         }
 
-        private List<IChange> GetChangesList(ShopItemScriptable shopItemScriptable)
+        private IChange CreateChange(IChangeData changeData)
         {
-            var list = new List<IChange>();
-            foreach (var changeData in shopItemScriptable.Changes)
+            foreach (var factory in _changeFactories)
             {
-                var change = _playerData.CreateChange(changeData);
-
+                var change = factory.CreateChange(changeData);
                 if (change != null)
                 {
-                    _diContainer.Inject(change);
-                    list.Add(change);
+                    return change;
                 }
             }
 
-            return list;
+            throw new Exception("Cant create such requirement");
         }
     }
 }

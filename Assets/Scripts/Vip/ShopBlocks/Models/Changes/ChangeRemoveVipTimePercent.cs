@@ -1,5 +1,4 @@
 ﻿using System;
-using Core;
 using Core.Interfaces.Domains;
 using Core.Interfaces.Shop;
 using Zenject;
@@ -9,17 +8,14 @@ namespace Vip.ShopBlocks.Models.Changes
 {
     public class ChangeRemoveVipTimePercent : IChange
     {
-        private IVipModule _vipModule;
+        private VipModule _vipModule;
         private readonly int _vipTimePercentToRemove;
 
         [Inject]
-        public void Construct(
-            PlayerData playerData
-        )
+        public void Construct([InjectOptional(Id = "Vip")] IPlayerResourceModule playerResourceModule)
         {
-            _vipModule = playerData.GetModule<IVipModule>();
+            _vipModule = (VipModule) playerResourceModule;
         }
-
         
         public ChangeRemoveVipTimePercent(IChangeData data)
         {

@@ -9,15 +9,13 @@ namespace Health.ShopBlocks.Models.Changes
 {
     public class ChangeRemoveHealthValue : IChange
     {
-        private IHealthModule _healthModule;
+        private HealthModule _healthModule;
         private readonly int _healthValueToRemove;
 
         [Inject]
-        public void Construct(
-            PlayerData playerData
-        )
+        public void Construct([InjectOptional(Id = "Health")] IPlayerResourceModule playerResourceModule)
         {
-            _healthModule = playerData.GetModule<IHealthModule>();
+            _healthModule = (HealthModule) playerResourceModule;
         }
         
         public ChangeRemoveHealthValue(IChangeData data)

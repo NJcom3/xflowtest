@@ -61,6 +61,7 @@
     <Compile Include="Assets\Scripts\Gold\ShopBlocks\Data\Changes\ChangeRemoveGoldValueData.cs" />
     <Compile Include="Assets\Scripts\Gold\Installers\GoldInstaller.cs" />
     <Compile Include="Assets\Scripts\Gold\ShopBlocks\Data\Requirements\RequirementMinGoldData.cs" />
+    <Compile Include="Assets\Scripts\Gold\GoldHudResource.cs" />
     <Compile Include="Assets\Scripts\Gold\ShopBlocks\Data\Changes\ChangeAddGoldValueData.cs" />
     <None Include="Assets\Scripts\Gold\Gold.asmdef" />
     <Reference Include="UnityEngine">

@@ -52,6 +52,7 @@
     <Compile Include="Assets\Scripts\Health\ShopBlocks\Data\Requirements\RequirementMaxHealthData.cs" />
     <Compile Include="Assets\Scripts\Health\ShopBlocks\Data\Changes\ChangeAddHealthValueData.cs" />
     <Compile Include="Assets\Scripts\Health\ShopBlocks\Data\Changes\ChangeRemoveHealthValueData.cs" />
+    <Compile Include="Assets\Scripts\Health\HealthHudResource.cs" />
     <Compile Include="Assets\Scripts\Health\ShopBlocks\RequirementFactory.cs" />
     <Compile Include="Assets\Scripts\Health\ShopBlocks\ChangeFactory.cs" />
     <Compile Include="Assets\Scripts\Health\ShopBlocks\Models\Changes\ChangeRemoveHealthPercent.cs" />

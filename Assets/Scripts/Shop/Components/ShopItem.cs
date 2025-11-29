@@ -17,8 +17,6 @@ namespace Shop.Components
 
         private ShopItemModel _model;
         private EventBus _eventBus;
-        
-        private bool _isLoading = false;
 
         [Inject]
         public void Construct(EventBus eventBus)
@@ -44,11 +42,6 @@ namespace Shop.Components
 
         private void RefreshState(bool v)
         {
-            if (_isLoading)
-            {
-                return;
-            }
-
             buyButton.interactable = _model.CanBeBuyed();
         }
 
@@ -56,18 +49,14 @@ namespace Shop.Components
         {
             if (_model.CanBeBuyed())
             {
-                _isLoading = true;
                 buyButton.interactable = false;
                 buyButtonText.text = "Обработка...";
                 
                 await _model.TryToBuy();
 
-                _isLoading = false;
-                buyButton.interactable = true;
                 buyButtonText.text = "Купить";
             }
 
-            _eventBus.Publish<ValuesChanged>();
         }
 
         private void OnDestroy()

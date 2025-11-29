@@ -1,5 +1,4 @@
 ﻿using System;
-using Core;
 using Core.Interfaces.Domains;
 using Core.Interfaces.Shop;
 using Zenject;
@@ -9,15 +8,13 @@ namespace Location.ShopBlocks.Models.Changes
 {
     public class ChangeGoToLocation : IChange
     {
-        private ILocationModule _locationModule;
+        private LocationModule _locationModule;
         private readonly string _location;
 
         [Inject]
-        public void Construct(
-            PlayerData playerData
-        )
+        public void Construct([InjectOptional(Id = "Location")] IPlayerResourceModule playerResourceModule)
         {
-            _locationModule = playerData.GetModule<ILocationModule>();
+            _locationModule = (LocationModule) playerResourceModule;
         }
 
         public ChangeGoToLocation(IChangeData data)

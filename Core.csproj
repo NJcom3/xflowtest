@@ -48,27 +48,21 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Core\Interfaces\Shop\IRequirementData.cs" />
     <Compile Include="Assets\Scripts\Core\Interfaces\Shop\IRequirementsFactory.cs" />
-    <Compile Include="Assets\Scripts\Core\Interfaces\Domains\IHealthModule.cs" />
     <Compile Include="Assets\Scripts\Core\Installers\SceneInstaller.cs" />
     <Compile Include="Assets\Scripts\Core\Interfaces\Shop\IChangeFactory.cs" />
-    <Compile Include="Assets\Scripts\Core\Base\ABasePlayerResourceModule.cs" />
     <Compile Include="Assets\Scripts\Core\Editor\CustomEditorTools.cs" />
-    <Compile Include="Assets\Scripts\Core\Interfaces\Domains\IVipModule.cs" />
     <Compile Include="Assets\Scripts\Core\PlayerData.cs" />
     <Compile Include="Assets\Scripts\Core\Interfaces\Shop\IChange.cs" />
     <Compile Include="Assets\Scripts\Core\Events\ActionAllowance.cs" />
-    <Compile Include="Assets\Scripts\Core\Interfaces\Domains\IGoldModule.cs" />
     <Compile Include="Assets\Scripts\Core\Interfaces\Base\ICountable.cs" />
     <Compile Include="Assets\Scripts\Core\Interfaces\Base\ISpendable.cs" />
     <Compile Include="Assets\Scripts\Core\Events\EventBus.cs" />
-    <Compile Include="Assets\Scripts\Core\Interfaces\Domains\ILocationModule.cs" />
     <Compile Include="Assets\Scripts\Core\Components\Hud.cs" />
     <Compile Include="Assets\Scripts\Core\Interfaces\Domains\IHudResource.cs" />
     <Compile Include="Assets\Scripts\Core\Components\HudItem.cs" />
     <Compile Include="Assets\Scripts\Core\Interfaces\Base\IReceivable.cs" />
     <Compile Include="Assets\Scripts\Core\Events\ValuesChanged.cs" />
     <Compile Include="Assets\Scripts\Core\Interfaces\Shop\IRequirement.cs" />
-    <Compile Include="Assets\Scripts\Core\Interfaces\Domains\IShopModule.cs" />
     <Compile Include="Assets\Scripts\Core\Interfaces\Domains\IPlayerResourceModule.cs" />
     <Compile Include="Assets\Scripts\Core\Interfaces\Shop\IChangeData.cs" />
     <Compile Include="Assets\Scripts\Core\Installers\CoreInstaller.cs" />

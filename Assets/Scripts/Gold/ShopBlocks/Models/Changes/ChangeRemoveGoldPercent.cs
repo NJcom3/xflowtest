@@ -1,5 +1,4 @@
 ﻿using System;
-using Core;
 using Core.Interfaces.Domains;
 using Core.Interfaces.Shop;
 using UnityEngine;
@@ -11,15 +10,13 @@ namespace Gold.ShopBlocks.Models.Changes
 {
     public class ChangeRemoveGoldPercent : IChange
     {
-        private IGoldModule _goldModule;
+        private GoldModule _goldModule;
         private readonly int _goldPercentToRemove;
 
         [Inject]
-        public void Construct(
-            PlayerData playerData
-        )
+        public void Construct([InjectOptional(Id = "Gold")] IPlayerResourceModule playerResourceModule)
         {
-            _goldModule = playerData.GetModule<IGoldModule>();
+            _goldModule = (GoldModule) playerResourceModule;
         }
         
         public ChangeRemoveGoldPercent(IChangeData data)

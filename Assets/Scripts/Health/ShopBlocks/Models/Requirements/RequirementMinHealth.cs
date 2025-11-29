@@ -9,15 +9,13 @@ namespace Health.ShopBlocks.Models.Requirements
 {
     public class RequirementMinHealth : IRequirement
     {
-        private IHealthModule _healthModule;
+        private HealthModule _healthModule;
         private readonly int _minHealth;
 
         [Inject]
-        public void Construct(
-            PlayerData playerData
-        )
+        public void Construct([InjectOptional(Id = "Health")] IPlayerResourceModule playerResourceModule)
         {
-            _healthModule = playerData.GetModule<IHealthModule>();
+            _healthModule = (HealthModule) playerResourceModule;
         }
 
         public RequirementMinHealth(IRequirementData data)

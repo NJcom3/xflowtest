@@ -9,15 +9,13 @@ namespace Vip.ShopBlocks.Models.Changes
 {
     public class ChangeRemoveVipTimeValue : IChange
     {
-        private IVipModule _vipModule;
+        private VipModule _vipModule;
         private readonly TimeSpan _vipTime;
 
         [Inject]
-        public void Construct(
-            PlayerData playerData
-        )
+        public void Construct([InjectOptional(Id = "Vip")] IPlayerResourceModule playerResourceModule)
         {
-            _vipModule = playerData.GetModule<IVipModule>();
+            _vipModule = (VipModule) playerResourceModule;
         }
 
         public ChangeRemoveVipTimeValue(IChangeData data)

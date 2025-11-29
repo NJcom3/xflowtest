@@ -1,5 +1,4 @@
 ﻿using System;
-using Core;
 using Core.Interfaces.Domains;
 using Core.Interfaces.Shop;
 using UnityEngine;
@@ -10,15 +9,13 @@ namespace Health.ShopBlocks.Models.Changes
 {
     public class ChangeAddHealthPercent : IChange
     {
-        private IHealthModule _healthModule;
+        private HealthModule _healthModule;
         private readonly int _healthPercentToAdd;
 
         [Inject]
-        public void Construct(
-            PlayerData playerData
-        )
+        public void Construct([InjectOptional(Id = "Health")] IPlayerResourceModule playerResourceModule)
         {
-            _healthModule = playerData.GetModule<IHealthModule>();;
+            _healthModule = (HealthModule) playerResourceModule;
         }
 
         public ChangeAddHealthPercent(IChangeData data)

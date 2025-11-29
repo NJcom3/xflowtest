@@ -1,83 +1,46 @@
 ﻿using System;
-using Core;
 using Core.Interfaces.Domains;
-using Gold.ShopBlocks;
 
 namespace Vip
 {
-    public class VipModule : ABasePlayerResourceModule, IVipModule
+    public class VipModule : IPlayerResourceModule
     {
-        private DateTime _endTime = DateTime.Now.AddHours(1);
+        private DateTime EndTime
+        {
+            get => _endTimeValue >= DateTime.Now ? _endTimeValue : DateTime.Now;
+            set => _endTimeValue = value;
+        }
+        
+        private DateTime _endTimeValue;
 
         public VipModule()
         {
-            _requirementsFactory = new RequirementFactory();
-            _changeFactory = new ChangeFactory();
+            EndTime = DateTime.Now.AddHours(1);
         }
 
         public TimeSpan GetVipTimeSpan()
         {
-            HandleNegativeVip();
-            return _endTime - DateTime.Now;
+            return EndTime - DateTime.Now;
         }
 
         public void AddTimeSpan(TimeSpan timeSpan)
         {
             HandleNegativeVip();
-            _endTime = _endTime + timeSpan;
+            EndTime += timeSpan;
         }
 
         public void RemoveTimeSpan(TimeSpan timeSpan)
         {
             HandleNegativeVip();
-            _endTime = _endTime - timeSpan;
-        }
-
-        private string TimeDisplayString(TimeSpan ts)
-        {
-            if (ts.Days >= 3) {
-                var days = (int) Math.Round(ts.TotalDays);
-                return $"{days.ToString()} days";
-            }
-
-            if (ts.Days >= 1) {
-                return $"{ts.Days.ToString()} days {ts.Hours.ToString()} hours";
-            }
-
-            if (ts.Hours >= 1) {
-                return $"{ts.Hours.ToString()} h {ts.Minutes.ToString()} m";
-            }
-
-            return $"{ts.Minutes.ToString()} m {ts.Seconds.ToString()} s";
-        }
-
-        private void HandleNegativeVip()
-        {
-            if (_endTime < DateTime.Now)
-            {
-                _endTime = DateTime.Now;
-            }
+            EndTime -= timeSpan;
         }
         
-        #region [HUD]
-
-        public string GetHudLabel()
+        private void HandleNegativeVip()
         {
-            return "VIP: ";
+            if (EndTime < DateTime.Now)
+            {
+                EndTime = DateTime.Now;
+            }
         }
-
-        public void OnCheatButtonClick()
-        {
-            HandleNegativeVip();
-            _endTime = DateTime.Now.AddHours(1);
-        }
-
-        public string GetHudValue()
-        {
-            HandleNegativeVip();
-            return TimeDisplayString(GetVipTimeSpan());
-        }
-
-        #endregion
     }
 }

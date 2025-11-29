@@ -1,20 +1,12 @@
-﻿using Core;
-using Core.Interfaces.Domains;
-using Gold.ShopBlocks;
+﻿using Core.Interfaces.Domains;
 
 namespace Location
 {
-    public class LocationModule : ABasePlayerResourceModule, ILocationModule
+    public class LocationModule : IPlayerResourceModule
     {
-        private const string StartLocation = "Sen'Jin Village";
         private string _location = StartLocation;
-
-        public LocationModule()
-        {
-            _requirementsFactory = new RequirementFactory();
-            _changeFactory = new ChangeFactory();
-        }
-
+        private const string StartLocation = "Sen'Jin Village";
+        
         public string GetLocation()
         {
             return _location;
@@ -24,23 +16,14 @@ namespace Location
         {
             _location = location;
         }
-
         
-        #region [HUD]
-        public string GetHudLabel()
-        {
-            return "Location: ";
-        }
-        
-        public void OnCheatButtonClick()
+        public void SetStartLocation()
         {
             SetLocation(StartLocation);
         }
 
-        public string GetHudValue()
-        {
-            return GetLocation();
-        }
+        
+        #region [HUD]
         #endregion
     }
 }

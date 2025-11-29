@@ -9,15 +9,13 @@ namespace Gold.ShopBlocks.Models.Requirements
 {
     public class RequirementMinGold : IRequirement
     {
-        private IGoldModule _goldModule;
+        private GoldModule _goldModule;
         private readonly int _minGold;
 
         [Inject]
-        public void Construct(
-            PlayerData playerData
-        )
+        public void Construct([InjectOptional(Id = "Gold")] IPlayerResourceModule playerResourceModule)
         {
-            _goldModule = playerData.GetModule<IGoldModule>();
+            _goldModule = (GoldModule) playerResourceModule;
         }
 
         public RequirementMinGold(IRequirementData data)

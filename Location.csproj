@@ -56,6 +56,7 @@
     <Compile Include="Assets\Scripts\Location\Installers\LocationInstaller.cs" />
     <Compile Include="Assets\Scripts\Location\ShopBlocks\Models\Requirements\RequirementNotAllowedLocations.cs" />
     <Compile Include="Assets\Scripts\Location\ShopBlocks\ChangeFactory.cs" />
+    <Compile Include="Assets\Scripts\Location\LocationHudResource.cs" />
     <None Include="Assets\Scripts\Location\Location.asmdef" />
     <Reference Include="UnityEngine">
       <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.55f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>

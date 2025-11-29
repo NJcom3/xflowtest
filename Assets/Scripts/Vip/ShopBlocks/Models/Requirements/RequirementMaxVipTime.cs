@@ -9,17 +9,15 @@ namespace Vip.ShopBlocks.Models.Requirements
 {
     public class RequirementMaxVipTime : IRequirement
     {
-        private IVipModule _vipModule;
+        private VipModule _vipModule;
         private readonly TimeSpan _maxVipTime;
 
         [Inject]
-        public void Construct(
-            PlayerData playerData
-        )
+        public void Construct([InjectOptional(Id = "Vip")] IPlayerResourceModule playerResourceModule)
         {
-            _vipModule = playerData.GetModule<IVipModule>();
+            _vipModule = (VipModule) playerResourceModule;
         }
-
+        
         public RequirementMaxVipTime(IRequirementData data)
         {
             if (data is not RequirementMaxVipTimeData requiredData)
