@@ -2,16 +2,16 @@
 {
     public class PlayerData
     {
-        private string _selectedItem;
+        private int _selectedItemIndex;
         
-        public void SelectItem(string itemName)
+        public void SelectItem(int index)
         {
-            _selectedItem = itemName;
+            _selectedItemIndex = index;
         }
 
-        public string SelectedItem()
+        public int SelectedItemIndex()
         {
-            return _selectedItem;
+            return _selectedItemIndex;
         }
     }
 }

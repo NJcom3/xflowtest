@@ -45,16 +45,14 @@ namespace Shop
 
         private void CreateSelectedItemModel()
         {
-            foreach (var itemScriptable in _shopScriptable.items)
-            {
-                if (itemScriptable.itemName == _playerData.SelectedItem())
-                {
-                    _model = _shopItemFactory.CreateShopItem(itemScriptable);
-                    return;
-                }
-            }
+            var index = _playerData.SelectedItemIndex();
 
-            throw new Exception("item does not found");
+            if (index < 0 || _shopScriptable.items.Count < index - 1)
+            {
+                throw new Exception("item does not found");
+            }
+            
+            _model = _shopItemFactory.CreateShopItem(_shopScriptable.items[index], index);
         }
 
         public void GoToMainScene()

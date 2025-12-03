@@ -20,6 +20,7 @@ namespace Shop.Models
         private PlayerData _playerData;
         private EventBus _eventBus;
         private bool _actionAllowed = true;
+        private int _index = -1;
         
         [Inject]
         public void Construct(
@@ -31,11 +32,12 @@ namespace Shop.Models
             _eventBus = eventBus;
             _eventBus.Subscribe<ActionAllowance>(AllowAction);
         }
-        public ShopItemModel(string itemName, List<IChange> changes, List<IRequirement> requirements)
+        public ShopItemModel(string itemName, List<IChange> changes, List<IRequirement> requirements, int index)
         {
             _itemName = itemName;
             _changes = changes;
             _requirements = requirements;
+            _index = index;
         }
 
         public bool CanBeBuyed()
@@ -84,7 +86,7 @@ namespace Shop.Models
                 return;
             }
             
-            _playerData.SelectItem(_itemName);
+            _playerData.SelectItem(_index);
             SceneManager.LoadScene("ItemScene");
         }
 

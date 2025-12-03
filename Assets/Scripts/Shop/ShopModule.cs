@@ -39,9 +39,9 @@ namespace Shop
         {
             _models = new List<ShopItemModel>();
             
-            foreach (var scriptable in _shopScriptable.items)
+            for (var i = 0; i < _shopScriptable.items.Count; i++)
             {
-                var model = _shopItemFactory.CreateShopItem(scriptable);
+                var model = _shopItemFactory.CreateShopItem(_shopScriptable.items[i], i);
                 _models.Add(model);
             }
         }

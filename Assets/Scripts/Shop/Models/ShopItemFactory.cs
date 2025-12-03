@@ -24,12 +24,13 @@ namespace Shop.Models
             _changeFactories = changeFactories;
         }
 
-        public ShopItemModel CreateShopItem(ShopItemScriptable shopItemScriptable)
+        public ShopItemModel CreateShopItem(ShopItemScriptable shopItemScriptable, int index)
         {
             var model = new ShopItemModel(
                 shopItemScriptable.itemName,
                 CreateChanges(shopItemScriptable),
-                CreateRequirements(shopItemScriptable)
+                CreateRequirements(shopItemScriptable),
+                index
             );
             _diContainer.Inject(model);
             return model;
